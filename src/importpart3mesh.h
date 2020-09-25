@@ -17,11 +17,6 @@ class Array2d;
 
 class Part1ParalPar3D;
 
-struct flxxgc {
-  LO flxtind[5];
-  double flxt[4];
-};
-
 class Part3Mesh3D{
   public:
 /*variables of XGC for both gene-xgc and gem-xgc coupling*/
@@ -63,21 +58,7 @@ class Part3Mesh3D{
 
 /*------------------------------------------------------*/
 /*variables specially owned by XGC for GEM-XGC coupling*/
-    LO* lgi0;
-    LO  nphi;
-    LO  nwedge;
-    double* Rcoordall; // store R of all nodes in XGC mesh
-    double* Zcoordall; // store Z of all nodes in XGC mesh
-    double** surf_idx; //store the vertex indices of each surface
-    double** theta_geo; //store the theta value of the nodes on the surface of xgc in the local process
-    double** theta_flx; //store  the flux_theta of the nodes on the surface of xgc mesh in the local process
-    LO cce_first; // The number labelling the first surface 
-    double*** y_xgc; 
-    double**** zeta_pot; //Store the theta_f mesh for interpolating potential provided by XGC to the one for GEM
-    double***** thetaflx_pot; //Store the five flux theta values for the 3rd order interpolation along the field line.
-    LO***** thetaflx_ind_pot; //Store the four indices of nodals for the 3rd order interpolation along the field line.
-    double**** nodesdist_fl; //Store the length of the four points along the field line for interpolation.
- 
+
     /* constructor - versurf has length = numsurf & versurf[i] = the number of nodes surface[i]
      * xcoords saves the radial coordinate of each surface.
      * zcoords saves the poloidal angle of each node on each surface.
@@ -113,13 +94,6 @@ class Part3Mesh3D{
       assert(tcase < TestCase::invalid);
       init(p1pp3d,tdir);
     }
-    Part3Mesh3D(Array2d<int>* xgcnodes,
-                Array2d<double>* rzcoords,
-                bool pproc,
-                TestCase tcase)
-              : preproc(pproc),test_case(tcase){                    
-      initXgcGem(xgcnodes,rzcoords);
-    }
 
     ~Part3Mesh3D()
     {
@@ -129,8 +103,8 @@ class Part3Mesh3D{
      if(mylk0!=NULL) delete[] mylk0;
      if(mylk1!=NULL) delete[] mylk1;
      if(mylk2!=NULL) delete[] mylk2;
-     if(Rcoordall!=NULL) delete[] Rcoordall;
-     if(Zcoordall!=NULL) delete[] Zcoordall;
+//     if(Rcoordall!=NULL) delete[] Rcoordall;
+//     if(Zcoordall!=NULL) delete[] Zcoordall;
      if(pzcoords!=NULL) delete[] pzcoords;
    }
 
@@ -139,7 +113,7 @@ class Part3Mesh3D{
     const TestCase test_case;
     class Part1ParalPar3D* p1;
     void init(const Part1ParalPar3D &p1pp3d, const std::string test_dir="");
-    void initXgcGem(Array2d<int>* xgcnodes,Array2d<double>* rzcoords);
+//    void initXgcGem(Array2d<int>* xgcnodes,Array2d<double>* rzcoords);
     /* helper function called by init */
     void DistriPart3zcoords(const Part1ParalPar3D  &p1pp3d,
         const std::string test_dir="");
@@ -147,14 +121,12 @@ class Part3Mesh3D{
     void DistributePoints(const double* exterarr, const LO gstart, const LO li,
         const double* interarr, const Part1ParalPar3D  &p1pp3d);
     void BlockIndexes(const MPI_Comm comm_x,const LO mype_x,const LO npx);
-    void gemDistributePoints(const double* exterarr, const LO gstart,LO li,
-         const double* interarr);
-    void initXgcGem(const Array2d<int>* xgcnodes,const Array2d<double>* rzcoords);
     void  JugeFirstSurfaceMatch(double xp1);
+/*
     inline LO search_zeta(const double dlength,const double length,const LO nlength,double tmp);
     inline struct flxxgc* search_flux_3rdorder_periodbound(double tmpflx,const double* flxin, LO num);
     void search_y(LO j1,LO j2,double w1,double w2,const double dy,const double ly,const double tmp); 
- 
+*/ 
 
     /* default constructor 
      * put this in private to prevent users from calling it

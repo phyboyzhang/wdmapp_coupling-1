@@ -6,8 +6,6 @@
 #include <cstddef>
 
 namespace coupler {
-template<class T>
-class Array1d;
 // create class for gene's mesh as well as its domain decomposition
 class Part1ParalPar3D {
   public:
@@ -67,6 +65,7 @@ class Part1ParalPar3D {
 
 /*------------------------------------------------------*/
 /*variables specially owned by GEM*/
+/*
     LO numprocs;
     LO ntube,imx,jmx,kmx,ntheta; //imx,jmx,kmx are the number of cells on the respective dimension.
     MPI_Comm grid_comm,tube_comm;
@@ -84,8 +83,6 @@ class Part1ParalPar3D {
     LO** mype_xztg; // store the mapping mype<-->(mype_x,mype_y)<-->(mype_t,mype_g)
     LO tli0,tli1,tli2;
     LO glk0,glk1,glk2;
-//    typedef vector<vector<vector<LO> > > vectInt3d;
-//    typedef vector<vector<LO> > vecInt2d;
     vecint2d sendOverlap_x;
     vecint2d sendOverlap_th;
     vecint2d recvOverlap_x;
@@ -96,10 +93,7 @@ class Part1ParalPar3D {
     MPI_Group zrecv_group;
     MPI_Comm  zrecv_comm;
     LO nwedge;
-
-    /* constructor
-     * optionally read preproc, test_case and test_dir from user
-     */
+*/
     Part1ParalPar3D(LO * parpar, 
         double* xzcoords,
         double* q_prof_,
@@ -111,22 +105,21 @@ class Part1ParalPar3D {
       init(parpar, xzcoords, q_prof, gene_cy, tdir);
       if(!mype) std::cerr << mype << " Done with Part1ParalPar3D class intialization \n"; 
     }
-    /*Test case constructor*/
-    Part1ParalPar3D(bool pproc,
+   Part1ParalPar3D(bool pproc,
         TestCase tcase,
       	std::string tdir)
       : preproc(pproc), test_case(tcase){
       init(NULL, NULL, NULL, NULL, tdir);
     }
-
-    /*The constructor for GEM*/
-    Part1ParalPar3D(Array1d<int>* gemmesh, 
+/*
+   Part1ParalPar3D(Array1d<int>* gemmesh, 
                     Array2d<double>* thfnz,
                     bool pproc = true, 
                     TestCase tcase=TestCase::off)
     : preproc(pproc),test_case(tcase){
       initGem(gemmesh,thfnz);
     }
+*/
     ~Part1ParalPar3D()
     {
       if(xcoords!=NULL)  delete[] xcoords;
@@ -139,7 +132,7 @@ class Part1ParalPar3D {
     const bool preproc;
     const TestCase test_case;
     void init(LO* parpar, double* xzcoords, double* q_prof, double* gene_cy, std::string test_dir="");
-    void initGem();
+//    void initGem();
     void initTest0(std::string test_dir);
     /* init* helper function */
     void CreateSubCommunicators();

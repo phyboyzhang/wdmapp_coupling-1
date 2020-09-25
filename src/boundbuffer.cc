@@ -69,7 +69,7 @@ void DatasProc3D::zPotentBoundaryBufAssign(const BoundaryDescr3D& bdesc)
      }
    }
 }
-
+/*
 void gemXgcDatasProc3D::zMeshPotentBoundaryBufAssign(BoundaryDescr3D& bdesc)
 {
   LO nzb=bdesc.nzb;
@@ -150,7 +150,7 @@ void gemXgcDatasProc3D::zMeshPotentBoundaryBufAssign(BoundaryDescr3D& bdesc)
       }
    }
 }
-
+*/
 
 void DatasProc3D::zDensityBoundaryBufAssign(CV*** box,BoundaryDescr3D& bdesc) 
 {
@@ -212,7 +212,7 @@ void DatasProc3D::zDensityBoundaryBufAssign(CV*** box,BoundaryDescr3D& bdesc)
     }
   }
 }
-
+/*
 void gemXgcDatasProc3D::zPotentBoundaryBufAssign(const double*** box,BoundaryDescr3D& bdesc)
 {
   LO nzb=bdesc.nzb;
@@ -235,15 +235,7 @@ void gemXgcDatasProc3D::zPotentBoundaryBufAssign(const double*** box,BoundaryDes
           mpisendrecv_aux1D(p1->comm_z,nzb,li0,lj0,lk0,bdesc.lowpotentzgemxgc[i][j],bdesc.uppotentzgemxgc[i][j],
               box[i][j]);
         //FIXME: It looks GEM doesn't enforce the parallel boundary condition
-/*
-          if(p1->mype_z==0){
-            for(LO k=0;k<nzb;k++)
-              bdesc.lowpotentz[i][j][k]=bdesc.lowpotentz[i][j][k]*bdesc.lowpbmat[i][j];
-          } else if(p1->mype_z==p1->npz-1){
-             for(LO k=0;k<nzb;k++)
-               bdesc.uppotentz[i][j][k]=bdesc.uppotentz[i][j][k]*bdesc.uppbmat[i][j];
-          }
-*/
+
         }
       }
 
@@ -324,7 +316,7 @@ void gemXgcDatasProc3D::zDensityBoundaryBufAssign(double*** box,BoundaryDescr3D&
     }
   }
 }
-
+*/
 
 }
 

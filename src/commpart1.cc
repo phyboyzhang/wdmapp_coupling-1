@@ -233,7 +233,7 @@ void Part1ParalPar3D::blockindice()
 }
 
 //Input GEM's mesh
-
+/*
 void Part1ParalPar3D::initGem(const Array1d<int>* gemmesh, const Array2d<double>* thfnz)
 {  
   MPI_Comm_size(MPI_COMM_WORLD,&numprocs);
@@ -467,7 +467,7 @@ void Part1ParalPar3D::getOverlapBox(vecint2d vec2d,LO* lowind,LO* upind,LO numpr
     vec2d.push_back(tmp1d); 
   } 
 }
-
+*/
 
 
 

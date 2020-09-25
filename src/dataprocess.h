@@ -17,9 +17,9 @@ class Array2d;
 template<class T>
 class Array3d;
 
+class BoundaryDescr3D;
 class Part3Mesh3D;
 class Part1ParalPar3D;
-class BoundaryDescr3D;
 
 class DatasProc3D {
 public:

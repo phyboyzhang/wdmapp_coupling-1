@@ -7,7 +7,8 @@
 #include <cmath>
 
 namespace coupler {
- void  gemXgcDatasProc3D::gemXgcDatasProc3D(bool pproc,TestCase test_case, bool ypar)
+/*
+ gemXgcDatasProc3D::gemXgcDatasProc3D(bool pproc,TestCase test_case, bool ypar)
  : preproc(pproc),
    testcase(test_case),
    yparal(ypar)  
@@ -338,7 +339,7 @@ void gemXgcDatasProc3D::potentFromCouplerToGem()
    MPI_Reduce(MPI_IN_PLACE,potGem,p1->nli0*p1->lj0*p1->glk0,MPI_DOUBLE,MPI_SUM,0,tube_comm);
 
 }
-
+*/
 
 
 

@@ -83,7 +83,7 @@ void BoundaryDescr3D::initpbmat(const Part1ParalPar3D &p1pp3d)
      }
    }
 }
-
+/*
 void BoundaryDescr3D::initGemXgc(const Part3Mesh3D& p3m3d,const Part1ParalPar3D &p1pp3d)
 {
   nzb=p1pp3d.nzb;
@@ -189,7 +189,7 @@ void BoundaryDescr3D::initGemXgc(const Part3Mesh3D& p3m3d,const Part1ParalPar3D 
   }   
 
 }
-
+*/
 
 BoundaryDescr3D::~BoundaryDescr3D()
 {

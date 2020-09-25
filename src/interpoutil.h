@@ -2,7 +2,6 @@ namespace coupler {
 
 // routines for interpolation
 template<class T>
-inline
 T Lag3dInterpo1D(const T* yin,const double* xin,const double x)
 {
   double l0,l1,l2,l3;

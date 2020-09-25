@@ -311,6 +311,7 @@ void Part3Mesh3D::DistributePoints(const double* exterarr, const LO gstart,LO li
 }
 
 //Initialize XGC's mesh for gem-xgc coupling
+/*
 void Part3Mesh3D::initXgcGem(const Array2d<int>* xgcnodes,const Array2d<double>* rzcoords)
 {
   LO* inttmp;
@@ -553,23 +554,6 @@ inline LO Part3Mesh3D::search_zeta(const double dlength,const double length,cons
   }
   j10=floor(tmp/dlength);
   return j10;
-/*
-  if(j10==0){
-    j11=-1;
-    j20=j10+1;
-    j21=j10+2;
-  } else if(j10=nlength-1){
-    j11=nlength-2;
-    j20=0;
-    j21=1;
-  } else {
-    j11=j10-1;
-    j20=j10+1;
-    j21=j10+2;
-  }
-  w2=(tmp-real(j1)*dlength)/dlength;
-  w1=1.0-w2;
-*/
 }
 
 inline struct flxxgc* Part3Mesh3D::search_flux_3rdorder_periodbound(
@@ -637,6 +621,6 @@ inline struct flxxgc* Part3Mesh3D::search_flux_3rdorder_periodbound(
   } 
   return tmp;
 }
-
+*/
 
 } 
